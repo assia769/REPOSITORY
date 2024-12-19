@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajouter un Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Ajouter un Document</h1>
+        <a href="{{ url_for('list_documents') }}" class="btn">Retour à la liste</a>
+    </header>
+    <main>
+        <form method="POST" action="{{ url_for('ajouter_document') }}">
+            <div class="form-group">
+                <label for="titre">Titre:</label>
+                <input type="text" id="titre" name="titre" required>
+            </div>
+            <div class="form-group">
+                <label for="annee_publication">Année de publication:</label>
+                <input type="number" id="annee_publication" name="annee_publication" required>
+            </div>
+            <div class="form-group">
+                <label for="editeur">Éditeur:</label>
+                <input type="text" id="editeur" name="editeur" required>
+            </div>
+            <div class="form-group">
+                <label for="type_document">Type de document:</label>
+                <select id="type_document" name="type_document" required>
+                    <option value="livre">Livre</option>
+                    <option value="periodique">Périodique</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="auteurs">Auteurs (pour les livres):</label>
+                <input type="text" id="auteurs" name="auteurs">
+            </div>
+            <div class="form-group">
+                <label for="ISBN">ISBN (pour les livres):</label>
+                <input type="text" id="ISBN" name="ISBN">
+            </div>
+            <button type="submit" class="btn">Ajouter</button>
+        </form>
+    </main>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des Emprunts</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Liste des Emprunts</h1>
+        <a href="{{ url_for('ajouter_emprunt') }}" class="btn">Nouvel Emprunt</a>
+    </header>
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Utilisateur</th>
+                    <th>Document</th>
+                    <th>Début</th>
+                    <th>Fin</th>
+                    <th>Statut</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for e in emprunts %}
+                <tr>
+                    <td>{{ e[0] }}</td>
+                    <td>{{ e[1] }}</td>
+                    <td>{{ e[2] }}</td>
+                    <td>{{ e[3] }}</td>
+                    <td>{{ e[4] }}</td>
+                    <td>{{ e[5] }}</td>
+                    <td>
+                        {% if e[5] == 'en cours' %}
+                        <a href="{{ url_for('retourner_emprunt', id_emprunt=e[0]) }}" class="btn">Retourner</a>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>

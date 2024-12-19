@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Exemplaires du Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Exemplaires du Document</h1>
+        <a href="{{ url_for('ajouter_exemplaire', reference=reference) }}" class="btn">Ajouter un Exemplaire</a>
+    </header>
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Date d'achat</th>
+                    <th>État</th>
+                    <th>Statut</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ex in exemplaires %}
+                <tr>
+                    <td>{{ ex[0] }}</td>
+                    <td>{{ ex[2] }}</td>
+                    <td>{{ ex[3] }}</td>
+                    <td>{{ ex[4] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>

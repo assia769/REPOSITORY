@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Bibliothèque - Accueil</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Gestion de Bibliothèque</h1>
+
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('list_documents') }}">Documents</a></li>
+                <li><a href="{{ url_for('list_emprunts') }}">Emprunts</a></li>
+                <li><a href="{{ url_for('emprunts_retards') }}">Retards</a></li>
+            </ul>
+            <h2>Bienvenue dans le système de gestion de bibliothèque</h2>
+
+        </nav>
+
+    </header>
+    <main>
+        <div class="quick-actions">
+            <a href="{{ url_for('ajouter_document') }}" class="btn">Ajouter un Document</a>
+            <a href="{{ url_for('ajouter_emprunt') }}" class="btn">Nouveau Prêt</a>
+        </div>
+    </main>
+</body>
+</html>

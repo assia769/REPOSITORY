@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des Documents</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Liste des Documents</h1>
+        <a href="{{ url_for('ajouter_document') }}" class="btn">Ajouter un Document</a>
+    </header>
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th>Titre</th>
+                    <th>Année</th>
+                    <th>Éditeur</th>
+                    <th>Type</th>
+                    <th>Exemplaires</th>
+                    <th>Disponibles</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for doc in documents %}
+                <tr>
+                    <td>{{ doc[1] }}</td>
+                    <td>{{ doc[2] }}</td>
+                    <td>{{ doc[3] }}</td>
+                    <td>{{ doc[4] }}</td>
+                    <td>{{ doc[5] }}</td>
+                    <td>{{ doc[6] }}</td>
+                    <td>
+                        <a href="{{ url_for('list_exemplaires', reference=doc[0]) }}">Voir Exemplaires</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>

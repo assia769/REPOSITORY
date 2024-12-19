@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Nouvel Emprunt</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Nouvel Emprunt</h1>
+        <a href="{{ url_for('list_emprunts') }}" class="btn">Retour à la liste</a>
+    </header>
+    <main>
+        <form method="POST" action="{{ url_for('ajouter_emprunt') }}">
+            <div class="form-group">
+                <label for="id_utilisateur">Utilisateur:</label>
+                <select id="id_utilisateur" name="id_utilisateur" required>
+                    <option value="">Sélectionnez un utilisateur</option>
+                    {% for u in utilisateurs %}
+                    <option value="{{ u[0] }}">{{ u[1] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="id_exemplaire">Exemplaire:</label>
+                <select id="id_exemplaire" name="id_exemplaire" required>
+                    <option value="">Sélectionnez un exemplaire</option>
+                    {% for e in exemplaires %}
+                    <option value="{{ e[0] }}">{{ e[1] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit" class="btn">Ajouter</button>
+        </form>
+    </main>
+</body>
+</html>
